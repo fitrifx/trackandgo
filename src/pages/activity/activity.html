@@ -1,0 +1,117 @@
+<!--
+  Generated template for the ActivityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title color="light">Your Activities</ion-title>
+    <ion-buttons end (click)="info()">
+        <button ion-button><ion-icon name="md-information-circle" style="zoom:1.7;" ></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  
+
+    <!--<div class="row" color="gray">
+        <div class="col">
+            <div class="textatt">
+                You haven't choose
+                any activity yet :(
+                Tap the '+' button 
+                to start your journey!
+            </div>
+            
+        </div>
+    </div>-->
+
+
+
+        <ion-card *ngFor="let item of items2" >
+           <!--<div *ngIf="item.userId == this.username">-->
+            <ion-item   color="primary">
+                <ion-avatar item-left>
+                    <img src="assets/imgs/{{item.activityPic}}" />
+                </ion-avatar>
+                <h2>{{item.activityName}}</h2>
+                <p class ="italic">{{item.activityDistrict}} , {{item.activityState}}</p>
+                <p>Date : {{item.date}}</p>
+                <p>Time : {{item.time}}</p>
+              </ion-item>
+              <!--<img src="data:image/jpeg;base64,{{item.activityPic}}" style="height: 300px; width: 100%;">--><img src="assets/imgs/{{item.activityPic}}" />
+          <ion-card-content class="buttonincard"> 
+            <p>{{item.activityShortDesc}}</p>
+          </ion-card-content> 
+
+
+
+          <ion-row no-padding>
+                <ion-col col-auto>
+                <button ion-button class="buttonincard" color="primary" (click)="viewUserActivity({ record: item })" >View
+              </button>
+            </ion-col>
+          
+          
+            <ion-col text-right >
+             <!-- <button ion-button color="danger" outline icon-left (click)="deleteActivity( item.activitylocationId )">-->
+                    <button ion-button color="danger" outline icon-left (click)="delete(item.activitylocationId,item.date,item.time)">
+              <ion-icon name='trash' is-active="false"></ion-icon>Delete
+            </button>
+            </ion-col>
+          
+            </ion-row>
+        <!--<ion-row><ion-col>
+        <button ion-button class="buttonincard" color="primary" (click)="viewUserActivity({ record: item })">
+        <ion-icon ios="ios-eye" md="md-eye"></ion-icon>
+          <ion-label> View</ion-label>   
+        </button></ion-col>
+        <ion-col col-auto>
+        <button
+             ion-button
+             color="danger"
+             item-right
+             (click)="deleteActivity( item.activitylocationId )" ><ion-icon name="trash"></ion-icon>Delete
+             </button></ion-col>
+            </ion-row>-->
+
+        <!--<ion-item color="primary">
+            <ion-label>Lets Check!</ion-label>
+          </ion-item>
+              <ion-item>
+                  <ion-label>Rope</ion-label>
+                  <ion-checkbox [(ngModel)]="rope"></ion-checkbox>
+              </ion-item>
+              
+                <ion-item>
+                  <ion-label>Torchlight</ion-label>
+                  <ion-checkbox [(ngModel)]="torchlight"></ion-checkbox>
+                </ion-item>
+        
+                <ion-item>
+                    <ion-label>Socks and Shoes</ion-label>
+                    <ion-checkbox [(ngModel)]="socksshoes"></ion-checkbox>
+                  </ion-item>
+        
+                  <ion-item>
+                      <ion-label>Cap</ion-label>
+                      <ion-checkbox [(ngModel)]="cap"></ion-checkbox>
+                    </ion-item>
+                </div>-->
+        </ion-card>
+
+      
+
+
+
+
+<ion-fab right bottom>
+    <button ion-fab color="danger" (click)="choose()"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+
+</ion-content>

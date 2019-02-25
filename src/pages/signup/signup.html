@@ -1,0 +1,79 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div padding>
+        <ion-row>
+          <ion-col>
+            <img class="logo" src="assets/imgs/ic.png" />
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-list inset class="no-border">
+                <ion-item>
+                    <ion-label>Username:</ion-label>
+                    <ion-input type="text" required [(ngModel)]="userId" name="userId" placeholder="Eg: fitrifx , john247" ></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Email:</ion-label>
+                  <ion-input type="text" required [(ngModel)]="email" name="email" placeholder="fi3oo96@gmail.com" ></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>First Name:</ion-label>
+                <ion-input type="text" required [(ngModel)]="firstname" name="firstname" ></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Last Name:</ion-label>
+                <ion-input type="text" required [(ngModel)]="lastname" name="lastname" ></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Age:</ion-label>
+                <ion-input type="text" required [(ngModel)]="age" name="age" ></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Current Location:</ion-label>
+                <ion-select [(ngModel)]="currentLocation" name="currentLocation" required>
+                  <ion-option value="0126">Pahang</ion-option>
+                  <ion-option value="0129">Kelantan</ion-option>
+                  <ion-option value="0123">Terengganu</ion-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Password:</ion-label>
+                <ion-input type="password" required [(ngModel)]="password" name="password" placeholder="Enter password"></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label fixed>Verify Password:</ion-label>
+                  <ion-input type="password" required [(ngModel)]="vpassword" name="vpassword" placeholder="Enter password again"></ion-input>
+                </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <button ion-button class="login-button" (click)="signup()">Sign Up</button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div (click)="goToSignup()">
+              <span>This app is in beta stage ; all locations and activities are only available in east zone Malaysia. </span>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+
+</ion-content>

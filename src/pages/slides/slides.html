@@ -1,0 +1,38 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+  </ion-navbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-slides #slider pager
+              (ionSlideDidChange)="onSlideChanged()">
+    <ion-slide [style.background-color]="color">
+            <div class="center">
+          <button ion-button color="primary" (click)="skip()" class="absolute">Skip</button>   
+          <img src="assets/imgs/1.png" />
+          
+            </div>
+    </ion-slide>
+    <ion-slide [style.background-color]="color">
+      <div class="center">
+    <img src="assets/imgs/2.png" />
+      </div>
+</ion-slide>
+<ion-slide [style.background-color]="color">
+  <div class="center">
+<img src="assets/imgs/3.png" />
+  </div>
+</ion-slide>
+<ion-slide [style.background-color]="color">
+    <div class="center">
+        <button ion-button color="primary" (click)="signup()" class="su">Sign Up</button>
+        <button ion-button color="primary" (click)="signin()" class="si">Sign In</button> 
+        <!--<button ion-button color="primary" (click)="app()" class="se">To the App</button>!-->
+  <img src="assets/imgs/4.png" />
+    </div>
+  </ion-slide>
+  
+    <ion-slide *ngFor="let slide of slides" [style.background-color]="color">
+      <h2>{{slide.title}}</h2>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

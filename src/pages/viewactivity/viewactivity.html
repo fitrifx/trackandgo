@@ -1,0 +1,254 @@
+<!--
+  Generated template for the ViewactivityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{activityName}}</ion-title>
+    <ion-buttons end (click)="delete(activitylocationId,myDate,myTime)">
+            <button ion-button><ion-icon name="md-trash" style="zoom:2.0;" ></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  
+  <ion-card >
+      <ion-item   color="primary">
+          <ion-avatar item-left>
+            <img src="assets/imgs/{{activityPic}}" />
+          </ion-avatar>
+          <h2>{{activityName}}</h2>
+          <p>{{activityDistrict}} , {{activityState}}</p>
+          <p>Date : {{myDate}}</p>
+          <p>Time : {{myTime}}</p>
+          
+        </ion-item>
+        <ion-slides autoplay="2000" loop="false">
+          <ion-slide>
+               <img src="assets/imgs/{{picone}}"style="height: 200px; width: 100%" />
+               <ion-item color = "primary">
+               <h3 center>Slide for more picture..</h3>
+              </ion-item>
+          </ion-slide>
+          <ion-slide>
+              <img src="assets/imgs/{{pictwo}}"style="height: 200px; width: 100%" />
+              <ion-item color = "primary">
+                <h3 center>Slide for more picture..</h3>
+               </ion-item>
+              
+         </ion-slide>
+         <ion-slide>
+            <img src="assets/imgs/{{picthree}}"style="height: 200px; width: 100%" />
+            <ion-item color = "primary">
+              <h3 center>Slide for more picture..</h3>
+             </ion-item>
+            
+       </ion-slide>
+      </ion-slides>
+      </ion-card>
+      <ion-card>
+
+      <ion-toolbar >
+
+          <ion-segment [(ngModel)]="cats">      
+            <ion-segment-button value="description">      
+                description     
+            </ion-segment-button>     
+            <ion-segment-button value="extra">      
+              Services    
+            </ion-segment-button>      
+            <ion-segment-button value="requirements">      
+              Requirements      
+            </ion-segment-button> 
+            <ion-segment-button value="review">      
+                Review      
+              </ion-segment-button>      
+          </ion-segment>      
+        </ion-toolbar>
+
+
+        <div [ngSwitch]="cats">
+            <div  *ngSwitchCase="'description'" ngSelected="selected">
+                <ion-card-content class="buttonincard">
+                    <p>{{description}}</p>
+                  </ion-card-content> 
+
+                  <ion-item color="primary">
+                      <p>For any questions or emergency cases, you may call:</p>
+                    </ion-item >
+                      <ion-row padding>
+                      <ion-col col-auto><p><ion-icon name="call" style="zoom:1.5;"></ion-icon></ion-col><ion-col> {{noTelResp}}</ion-col>
+                      </ion-row>
+                      <ion-row padding> <ion-col col-auto>
+                      <p><ion-icon name="home" style="zoom:1.5;"></ion-icon></ion-col> <ion-col>{{nameTelResp}}</ion-col>
+                      </ion-row>
+                      <ion-item color="primary">
+                        <p>Location : </p>
+                      </ion-item >
+                      <ion-row padding>
+                        <ion-col col-auto><p><ion-icon name="ios-navigate" style="zoom:1.5;"></ion-icon></ion-col><ion-col>{{activityLat}} , {{activityLong}}</ion-col>
+                        </ion-row>
+                      <ion-item color="primary">
+                        <p>Navigation : </p>
+                         </ion-item >
+                         <ion-row padding>
+                                <button ion-button block color="primary" (click)="navigate()">
+                                        <ion-label>Navigate Me!</ion-label>    
+                                    </button>
+                         </ion-row>
+            </div>
+
+            <div  *ngSwitchCase="'extra'" >
+                <ion-item color="primary">
+                    <p>Nearby Services</p>
+                </ion-item>
+                    <ion-list *ngFor="let count of counts">
+                            <ion-item *ngIf="count.alId == this.activitylocationid" text-wrap>
+                                    
+                                <!--<ion-avatar item-start>
+                                <text-avatar [text]="count.na" [color]="primary" item-left></text-avatar>
+                                </ion-avatar>-->
+                                <h2>{{count.name}}</h2>  
+                                <h3>{{count.noTel}}</h3>
+                                <h3>{{count.address}}</h3>
+
+                        </ion-item>   
+                    </ion-list> 
+            </div>
+
+            <div  *ngSwitchCase="'requirements'" >
+              
+              <ion-item color="primary">
+              <ion-row>
+                <ion-col>
+                 <h2>Lets check!</h2>
+                </ion-col>
+                <ion-col text-right>
+                    <ion-icon name="information-circle" (click)="checkreq({record : activityName})" style="zoom:1.2;"></ion-icon>
+                </ion-col>
+              </ion-row>
+              </ion-item>
+             
+              <ion-item>
+                <ion-label>{{req1}}</ion-label>
+                <ion-checkbox [(ngModel)]="res1" ></ion-checkbox>
+              </ion-item>
+              <ion-item>
+                  <ion-label>{{req2}}</ion-label>
+                  <ion-checkbox [(ngModel)]="res2" ></ion-checkbox>
+              </ion-item>
+              <ion-item>
+                  <ion-label>{{req3}}</ion-label>
+                  <ion-checkbox [(ngModel)]="res3" ></ion-checkbox>
+              </ion-item>
+              <ion-item>
+                  <ion-label>{{req4}}</ion-label>
+                  <ion-checkbox [(ngModel)]="res4"></ion-checkbox>
+              </ion-item>
+              <ion-item>
+                  <ion-label>{{req5}}</ion-label>
+                  <ion-checkbox [(ngModel)]="res5" ></ion-checkbox>
+              </ion-item>
+              <ion-item>
+                  <ion-label>{{req6}}</ion-label>
+                  <ion-checkbox [(ngModel)]="res6" ></ion-checkbox>
+              </ion-item>
+
+              <button ion-button block (click)="submitreq()">Save</button>
+            
+            
+                    
+                            
+              
+               
+                     
+
+                
+               
+            </div>
+
+            <div  *ngSwitchCase="'review'" >
+                    
+                    <ion-list *ngFor="let item of items">
+                    <ion-item *ngIf="item.activitylocationId == this.activitylocationid" text-wrap >
+                            
+                        <ion-avatar item-start>
+                        <text-avatar [text]="item.userId" [color]="primary" item-left></text-avatar>
+                        </ion-avatar>
+                        <h2>{{item.userId}}</h2>  
+                        <h3>{{item.review}}</h3>
+                  
+                    </ion-item>
+                    
+                </ion-list>
+                    <br>
+                    <ion-item>               
+                      <ion-input type="text" [(ngModel)]="review" name = "review" placeholder="Send a review..."></ion-input>                
+                      <button ion-button clear (click)="sendreview()" item-end><ion-icon class="footer-btn" name="send" style="zoom:1.7;"></ion-icon></button>                
+                    </ion-item>
+
+            </div>
+        </div>
+
+    
+    </ion-card>
+    <ion-card #map id="map">
+      </ion-card>
+          
+
+<ion-card>
+      <ion-item color="primary">
+            <p>Manage your activity :</p>
+      </ion-item >
+      <ion-card-content>
+          <br>
+          <p>Current time and date:</p>
+          <ion-row>
+          <ion-col>
+            <p>Time</p>
+          </ion-col>
+          <ion-col>
+          <p>{{myTime}}</p>
+          </ion-col>
+          </ion-row>
+          <ion-row>
+                <ion-col>
+                  <p>Date</p>
+                </ion-col>
+                <ion-col>
+                <p>{{myDate}}</p>
+                </ion-col>
+                </ion-row>
+      </ion-card-content>
+
+      <ion-row no-padding>
+            <button ion-button block  color="primary">
+                    <ion-icon name="md-calendar" item-start large></ion-icon><ion-label>Pick your date!</ion-label>
+                    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="ndate"></ion-datetime>
+              </button>
+              
+              <button ion-button block color="primary">
+                  <ion-icon name="md-time" item-start large></ion-icon><ion-label>Pick your time!</ion-label>
+                  <ion-datetime displayFormat="hh:mm A" [(ngModel)]="ntime"></ion-datetime>
+              </button>
+              <br>
+              <button ion-button block color="primary" (click)="updatedt()">
+                <ion-label>Update</ion-label>    
+            </button>
+        
+        <ion-col text-left>
+            <button ion-button center (click)="delete(activitylocationid)">Delete</button></ion-col>
+        <ion-col text-right>
+            <button ion-button right (click)="checkreq({record : activityName})">Check!</button></ion-col>
+      </ion-row>
+</ion-card>
+
+
+
+</ion-content>
